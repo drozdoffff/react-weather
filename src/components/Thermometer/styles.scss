@@ -1,0 +1,17 @@
+
+.b-thermometer {
+  width: 484px;
+  height: 261px;
+  margin: 0 auto;
+
+  &__icon {
+    display: inline-block;
+  }
+  &__degrees {
+    display: inline-block;
+    font-size: 20px;
+  }
+  &__description {
+    font-size: 12px;
+  }
+}

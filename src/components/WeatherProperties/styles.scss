@@ -1,0 +1,13 @@
+
+.b-weather-properties {
+  height: 162px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  &__item {
+    width: 185px;
+    height: 62px;
+    background-color: blueviolet;
+  }
+}

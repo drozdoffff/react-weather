@@ -1,0 +1,49 @@
+
+.b-head {
+  margin-top: 40px;
+  height: 75px;
+
+  &__place {
+    float: left;
+    color: white;
+    &-city {
+      font-size: 50px;
+      line-height: 60px;
+    }
+    &-change {
+      display: inline-block;
+      font-size: 18px;
+      opacity: 0.6;
+      line-height: 22px;
+      margin-right: 35px;
+      cursor: pointer;
+    }
+    &-current {
+      cursor: pointer;
+      display: inline-block;
+      font-size: 18px;
+      opacity: 0.6;
+      line-height: 22px;
+    }
+    &-current svg{
+      margin-right: 14px;
+    }
+  }
+
+  &__switcher {
+    float: right;
+    &-degree {
+      display: inline-block;
+      color: #FFFFFF;
+      opacity: 0.4;
+      margin-right: 9px;
+      font-size: 18px;
+    }
+    &-button {
+      display: inline-block;
+      cursor: pointer;
+      color: #FFFFFF;
+      height: 29px;
+    }
+  }
+}
