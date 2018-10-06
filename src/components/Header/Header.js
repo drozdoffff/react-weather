@@ -9,17 +9,19 @@ class Header extends Component {
 
     static propTypes = {
         checked: PropTypes.bool,
-        onSwitchChange: PropTypes.func
+        onSwitchChange: PropTypes.func,
+        city: PropTypes.string
     };
 
     render() {
         const { checked,
-                onSwitchChange } = this.props;
+                onSwitchChange,
+                city } = this.props;
         return (
             <div className="b-head">
                 <div className="b-head__place">
                     <div className="b-head__place-city">
-                        Омск
+                        {city}
                     </div>
                     <div className="b-head__place-change">
                         Сменить город
