@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import style from './styles.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons'
-
+import { DegreeSwitch } from '../Buttons/DegreeSwitch'
+import PropTypes from 'prop-types';
 
 class Header extends Component {
+
+    static propTypes = {
+        checked: PropTypes.bool,
+        onSwitchChange: PropTypes.func
+    };
+
     render() {
+        const { checked,
+                onSwitchChange} = this.props;
         return (
             <div className="b-head">
                 <div className="b-head__place">
@@ -25,9 +34,9 @@ class Header extends Component {
                         °
                     </div>
                     <div className="b-head__switcher-button">
-                        <div className="b-button">
-                            C F
-                        </div>
+                        <DegreeSwitch
+                            checked={checked}
+                            onChange={onSwitchChange}/>
                     </div>
                 </div>
             </div>

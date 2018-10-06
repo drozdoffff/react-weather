@@ -32,12 +32,14 @@
 
   &__switcher {
     float: right;
+    margin-top: 10px;
     &-degree {
       display: inline-block;
       color: #FFFFFF;
       opacity: 0.4;
       margin-right: 9px;
       font-size: 18px;
+      vertical-align: super;
     }
     &-button {
       display: inline-block;
