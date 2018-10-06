@@ -1,6 +1,6 @@
 
 .b-thermometer {
-  width: 484px;
+  width: auto;
   height: 261px;
   margin: 0 auto;
 
@@ -9,9 +9,14 @@
   }
   &__degrees {
     display: inline-block;
-    font-size: 20px;
+    line-height: 170px;
+    font-size: 165px;
+    color: #FFFFFF;
+    vertical-align: top;
   }
   &__description {
-    font-size: 12px;
+    color: #FFFFFF;
+    font-size: 25px;
+    text-align: center;
   }
 }

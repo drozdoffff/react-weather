@@ -14,7 +14,7 @@ class Header extends Component {
 
     render() {
         const { checked,
-                onSwitchChange} = this.props;
+                onSwitchChange } = this.props;
         return (
             <div className="b-head">
                 <div className="b-head__place">
