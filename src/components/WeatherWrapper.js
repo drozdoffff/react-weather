@@ -8,26 +8,47 @@ import WeatherProperties from './WeatherProperties/WeatherProerties'
 class WeatherWrapper extends Component {
 
     state = {
-        checked: false
+        checked: false,
+        icon: 'sun',
+        degrees: '294',
+        description: 'Ясно',
+        wind: {
+            speed: 5,
+            deg: 150
+        },
+        pressure: 1011,
+        humidity: 21,
     };
 
     onSwitchChange = () => this.setState({checked: !this.state.checked});
 
 
     render() {
-        const { checked } = this.state;
+        const { checked,
+                pressure,
+                humidity,
+                wind,
+                icon,
+                degrees,
+                description } = this.state;
         return (
             <div className="b-weather-wrapper">
                 <div className='b-weather-wrapper__row'>
                     <Header
                         onSwitchChange={this.onSwitchChange}
-                        checked={checked}/>
+                        checked={checked} />
                 </div>
                 <div className='b-weather-wrapper__thermometer'>
-                    <Thermometer/>
+                    <Thermometer
+                        icon={icon}
+                        degrees={degrees}
+                        description={description} />
                 </div>
                 <div className='b-weather-wrapper__row'>
-                    <WeatherProperties/>
+                    <WeatherProperties
+                        wind={`${wind.speed} м/с, ${wind.deg}`}
+                        pressure={`${pressure} мм рт. ст.`}
+                        humidity={`${humidity}%`} />
                 </div>
             </div>
         );

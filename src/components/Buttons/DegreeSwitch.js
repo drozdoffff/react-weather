@@ -15,5 +15,6 @@ export const DegreeSwitch = ({checked = false, ...props}) =>
     </div>;
 
 DegreeSwitch.propTypes = {
-    checked: PropTypes.bool
+    checked: PropTypes.bool,
+    onChange: PropTypes.func
 };

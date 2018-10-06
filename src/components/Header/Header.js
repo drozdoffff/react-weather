@@ -36,7 +36,7 @@ class Header extends Component {
                     <div className="b-head__switcher-button">
                         <DegreeSwitch
                             checked={checked}
-                            onChange={onSwitchChange}/>
+                            onChange={onSwitchChange} />
                     </div>
                 </div>
             </div>

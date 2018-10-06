@@ -1,0 +1,15 @@
+
+.b-weather-properties__item {
+  width: 185px;
+  height: 62px;
+  color: #FFFFFF;
+
+  &-label {
+    opacity: 0.6;
+    font-size: 18px;
+  }
+  &-info {
+    font-size: 25px;
+    line-height: 50px;
+  }
+}
