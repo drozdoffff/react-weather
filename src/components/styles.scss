@@ -8,10 +8,13 @@
   font-size:12px;
   display: flex;
   flex-direction: column;
+  transition: all .7s ease-in-out;
+
 
   &__row {
     width: 960px;
     margin: 0 auto;
+    transition: all .7s ease-in-out;
   }
   &__thermometer {
     flex-grow: 1;
@@ -21,6 +24,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .7s ease-in-out;
+
   }
 
+}
+
+@media (max-width: 900px) {
+  .b-weather-wrapper {
+    background-color: #7290B9;
+    &__row {
+      width: 560px;
+    }
+    &__thermometer {
+      width: 560px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .b-weather-wrapper {
+    &__row {
+      width: 360px;
+    }
+    &__thermometer {
+      width: 475px;
+    }
+  }
+}
+
+@media (max-width: 475px) {
+  .b-weather-wrapper {
+    &__row {
+      width: 310px;
+    }
+    &__thermometer {
+      width: 310px;
+    }
+  }
 }

@@ -3,6 +3,11 @@
   src: url('/fonts/Lato-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'Lato-Light';
+  src: url('/fonts/Lato-Light.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;

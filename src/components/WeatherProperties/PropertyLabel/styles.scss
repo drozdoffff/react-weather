@@ -3,13 +3,35 @@
   width: 200px;
   height: 62px;
   color: #FFFFFF;
+  transition: all .7s ease-in-out;
+
 
   &-label {
     opacity: 0.6;
     font-size: 17px;
+    transition: all .7s ease-in-out;
   }
   &-info {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 50px;
+    transition: all .7s ease-in-out;
+
   }
+}
+
+@media (max-width: 900px) {
+  .b-weather-properties__item {
+    width: 150px;
+    &-label {
+      font-size: 15px;
+    }
+    &-info {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+
 }

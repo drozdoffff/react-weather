@@ -98,7 +98,7 @@ class WeatherWrapper extends Component {
                 </div>
                 <div className='b-weather-wrapper__row'>
                     <WeatherProperties
-                        wind={`${wind.speed} м/с, ${this.degreesToCompass(wind.deg)}`}
+                        wind={`${Math.round(wind.speed)} м/с, ${this.degreesToCompass(wind.deg)}`}
                         pressure={`${pressure} мм рт. ст.`}
                         humidity={`${humidity}%`} />
                 </div>

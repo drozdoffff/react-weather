@@ -3,9 +3,11 @@
   width: auto;
   height: 261px;
   margin: 0 auto;
+  transition: all .7s ease-in-out;
 
   &__icon {
     display: inline-block;
+    transition: all .7s ease-in-out;
   }
   &__degrees {
     display: inline-block;
@@ -13,11 +15,39 @@
     font-size: 165px;
     color: #FFFFFF;
     vertical-align: top;
+    transition: all .7s ease-in-out;
   }
   &__description {
     color: #FFFFFF;
     font-size: 25px;
     text-align: center;
     text-transform: capitalize;
+    transition: all .7s ease-in-out;
+  }
+}
+
+@media (max-width: 900px) {
+  .b-thermometer {
+    &__icon {
+      width: 200px;
+      height: 200px;
+      transform: scale(0.5);
+    }
+    &__degrees {
+      line-height: 180px;
+      font-size: 83px;
+      margin-left: -50px;
+    }
+    &__description {
+      margin-top: -40px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .b-thermometer {
+    &__degrees {
+      font-family: 'Lato-Light', sans-serif;
+    }
   }
 }

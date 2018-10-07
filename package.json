@@ -23,7 +23,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "share": "webpack-dev-server --host 0.0.0.0 --port 8085"
   },
   "eslintConfig": {
     "extends": "react-app"

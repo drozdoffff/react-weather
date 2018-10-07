@@ -5,4 +5,20 @@
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
+  transition: all .7s ease-in-out;
+
+}
+
+@media (max-width: 900px) {
+  .b-weather-properties {
+    margin: 0 auto;
+    width: 400px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 475px) {
+  .b-weather-properties {
+    width: 320px;
+  }
 }
