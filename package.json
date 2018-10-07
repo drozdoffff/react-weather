@@ -18,7 +18,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-fontawesome": "^1.6.1"
+    "react-fontawesome": "^1.6.1",
+    "react-geolocated": "^2.4.0"
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",

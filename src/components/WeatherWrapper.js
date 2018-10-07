@@ -3,9 +3,13 @@ import style from './styles.scss'
 import Header from './Header/Header'
 import Thermometer from './Thermometer/Thermometer'
 import WeatherProperties from './WeatherProperties/WeatherProerties'
+import {geolocated, geoPropTypes} from 'react-geolocated';
+import PropTypes from 'prop-types';
 
 
 class WeatherWrapper extends Component {
+
+    static propTypes = {...WeatherWrapper.propTypes, ...geoPropTypes};
 
     state = {
         checked: true,
@@ -48,6 +52,18 @@ class WeatherWrapper extends Component {
                         city={city}/>
                 </div>
                 <div className='b-weather-wrapper__thermometer'>
+                    {!this.props.isGeolocationAvailable
+                        ? <div>Your browser does not support Geolocation</div>
+                        : !this.props.isGeolocationEnabled
+                            ? <div>Geolocation is not enabled</div>
+                            : this.props.coords
+                                ? <table>
+                                    <tbody>
+                                    <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
+                                    <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
+                                    </tbody>
+                                </table>
+                                : <div>Getting the location data&hellip; </div>}
                     <Thermometer
                         icon={icon}
                         degrees={degrees}
@@ -64,4 +80,9 @@ class WeatherWrapper extends Component {
     }
 }
 
-export default WeatherWrapper;
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})(WeatherWrapper);
