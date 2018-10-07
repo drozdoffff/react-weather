@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
     context: __dirname,
-    entry: './src/index.js',
+    entry: ['babel-polyfill', './src/index.js'],
     devtool: '#cheap-module-source-map',
     module: {
         rules: [

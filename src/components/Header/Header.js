@@ -10,13 +10,15 @@ class Header extends Component {
     static propTypes = {
         checked: PropTypes.bool,
         onSwitchChange: PropTypes.func,
-        city: PropTypes.string
+        city: PropTypes.string,
+        getGeo: PropTypes.func
     };
 
     render() {
         const { checked,
                 onSwitchChange,
-                city } = this.props;
+                city,
+                getGeo } = this.props;
         return (
             <div className="b-head">
                 <div className="b-head__place">
@@ -26,7 +28,7 @@ class Header extends Component {
                     <div className="b-head__place-change">
                         Сменить город
                     </div>
-                    <div className="b-head__place-current">
+                        <div className="b-head__place-current" onClick={getGeo}>
                         <FontAwesomeIcon icon={faLocationArrow} />
                         Мое местоположение
                     </div>

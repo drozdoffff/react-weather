@@ -13,16 +13,47 @@ class WeatherWrapper extends Component {
 
     state = {
         checked: true,
-        icon: 'sun',
-        degrees: 294,
-        description: 'Ясно',
+        icon: '01',
+        degrees: 0,
+        description: '-',
         wind: {
-            speed: 5,
-            deg: 150
+            speed: 0,
+            deg: 0
         },
-        pressure: 1011,
-        humidity: 21,
-        city: 'Омск'
+        pressure: 0,
+        humidity: 0,
+        city: '-',
+        data: {}
+    };
+
+    async componentDidMount() {
+        try {
+            const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=55.753960&lon=37.620393&APPID=3c723b18b495d48c60953bfc19305648&lang=ru&units=imperial`);
+            const json = await response.json();
+            this.setState({ wind: json.wind,
+                            degrees: json.main.temp,
+                            description: json.weather[0].description,
+                            icon: json.weather[0].icon.replace(/[^-0-9]/gim,''),
+                            pressure: json.main.pressure,
+                            humidity: json.main.humidity,
+                            city: json.name})
+        } catch (ex) {
+            alert('Сервер недоступен', ex);
+        }
+    };
+
+     getWeatherByCurrentCoords = () => {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.props.coords.latitude}&lon=${this.props.coords.longitude}&APPID=3c723b18b495d48c60953bfc19305648&lang=ru&units=imperial`)
+            .then(res => res.json())
+            .then(json => this.setState({
+                checked: true,
+                wind: json.wind,
+                degrees: json.main.temp,
+                description: json.weather[0].description,
+                icon: json.weather[0].icon.replace(/[^-0-9]/gim,''),
+                pressure: json.main.pressure,
+                humidity: json.main.humidity,
+                city: json.name}));
     };
 
     onSwitchChange = () => {
@@ -33,6 +64,13 @@ class WeatherWrapper extends Component {
     convertDegree = (degrees) => this.state.checked ?
         Math.round((degrees - 32) * 5 / 9) :
         Math.round(degrees * 9 / 5 + 32 );
+
+    degreesToCompass = (deg) => {
+        const val = deg/90+0.5;
+        const directions = ['северный', 'восточный', 'южный', 'западный'];
+        return directions[`${Math.round(val)}`];
+    }
+
 
     render() {
         const { checked,
@@ -49,29 +87,18 @@ class WeatherWrapper extends Component {
                     <Header
                         onSwitchChange={this.onSwitchChange}
                         checked={checked}
-                        city={city}/>
+                        city={city}
+                        getGeo={this.getWeatherByCurrentCoords} />
                 </div>
                 <div className='b-weather-wrapper__thermometer'>
-                    {!this.props.isGeolocationAvailable
-                        ? <div>Your browser does not support Geolocation</div>
-                        : !this.props.isGeolocationEnabled
-                            ? <div>Geolocation is not enabled</div>
-                            : this.props.coords
-                                ? <table>
-                                    <tbody>
-                                    <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
-                                    <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-                                    </tbody>
-                                </table>
-                                : <div>Getting the location data&hellip; </div>}
                     <Thermometer
                         icon={icon}
-                        degrees={degrees}
+                        degrees={Math.round(degrees)}
                         description={description} />
                 </div>
                 <div className='b-weather-wrapper__row'>
                     <WeatherProperties
-                        wind={`${wind.speed} м/с, ${wind.deg}`}
+                        wind={`${wind.speed} м/с, ${this.degreesToCompass(wind.deg)}`}
                         pressure={`${pressure} мм рт. ст.`}
                         humidity={`${humidity}%`} />
                 </div>
@@ -82,7 +109,7 @@ class WeatherWrapper extends Component {
 
 export default geolocated({
     positionOptions: {
-        enableHighAccuracy: false,
+        enableHighAccuracy: true,
     },
     userDecisionTimeout: 5000,
 })(WeatherWrapper);
