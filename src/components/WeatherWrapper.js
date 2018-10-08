@@ -68,7 +68,7 @@ class WeatherWrapper extends Component {
     degreesToCompass = (deg) => {
         const val = deg/90+0.5;
         const directions = ['северный', 'восточный', 'южный', 'западный'];
-        return directions[`${Math.round(val)}`];
+        return directions[`${Math.round(val)-1}`];
     }
 
 
